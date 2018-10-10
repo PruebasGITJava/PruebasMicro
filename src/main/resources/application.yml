@@ -18,3 +18,4 @@ spring:
             non_contextual_creation: true
 swagger-ui: 
   show: true
+
