@@ -12,16 +12,13 @@ import org.springframework.ws.client.core.support.WebServiceGatewaySupport;
 import org.springframework.ws.soap.client.core.SoapActionCallback;
 
 public class SOAPConnector extends WebServiceGatewaySupport {
-<<<<<<< HEAD
 	/**
 	 * 
 	 * @param a
 	 * @param b
 	 * @return
 	 */
-=======
 
->>>>>>> branch 'pruebas' of https://github.com/PruebasGITJava/PruebasMicro.git
 	public AddResponse getAccountAdd(int a, int b) {
 
 		Add request = new Add();
