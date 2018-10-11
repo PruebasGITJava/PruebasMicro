@@ -26,6 +26,7 @@ public class ApplicationConfig {
 	@Bean
 	public static Properties getMailSender() {
 
+<<<<<<< HEAD
 		// La configuración para enviar correo
 		Properties properties = new Properties();
 		properties.put("mail.smtp.host", "smtp.gmail.com");
@@ -41,3 +42,19 @@ public class ApplicationConfig {
 	// la clave la guardas encriptada en el properties
 
 }
+=======
+		Properties props = new Properties();
+		// Usar autenticación mediante usuario y clave
+		props.put("mail.smtp.auth", "true");
+		// Para conectar de manera segura al servidor SMTP
+		props.put("mail.smtp.starttls.enable", "true");
+		// El servidor SMTP de Google
+		props.put("mail.smtp.host", "smtp.gmail.com");
+		// El puerto SMTP seguro de Google
+		props.put("mail.smtp.port", "587");
+		return props;
+
+	}
+
+}
+>>>>>>> branch 'pruebas' of https://github.com/PruebasGITJava/PruebasMicro.git

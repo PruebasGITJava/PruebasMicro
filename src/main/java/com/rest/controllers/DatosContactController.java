@@ -28,7 +28,10 @@ public class DatosContactController {
 	@PutMapping("/person/datos")
 	public String updateContact1(@RequestBody Contact contact) {
 		if (!contact.getEmail().trim().isEmpty() && !contact.getPasswd().trim().isEmpty()) {
+<<<<<<< HEAD
 
+=======
+>>>>>>> branch 'pruebas' of https://github.com/PruebasGITJava/PruebasMicro.git
 			List<Contact> contactos = contactServiceImpl.findByNombreOrderById(contact.getNombre());
 
 			for (Contact user : contactos) {
