@@ -4,7 +4,7 @@ spring:
     url: jdbc:postgresql://ec2-54-217-235-159.eu-west-1.compute.amazonaws.com:5432/d21j385ftheehu
     username: czaagkfariuotr
     password: 77f13f3003f716f7bd5a2a2afa942977cb8b327d75266b028b105d48210850e9
-
+    # JPA #
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     generate-ddl: true
@@ -16,6 +16,36 @@ spring:
         jdbc:
           lob: 
             non_contextual_creation: true
+    # END JPA #
+    # MAIL #
+  mail:
+    host: smtp.gmail.com
+    port: 25
+    username: onboarding.pf@gmail.com
+    password: Ciber2017
+    protocol: smtp
+    default-encoding: UTF-8
+    properties:
+      mail:
+        smtp:
+          auth: false
+          starttls:
+              enable: true
+        debug: true
+    # END MAIL #
+    # FREE MARKER #
+  freemarker: ##1 Mails de aplicacion
+    template-loader-path:
+    - classpath:/templates/mail
+    # FREE MARKER END #
+    # SWAGGER-UI #
 swagger-ui: 
   show: true
 
+mail: ## SMTP
+  config:
+    server: smtp.gmail.com
+    port: 25
+  from:
+    user: onboarding.pf@gmail.com
+    pass: Ciber2017
