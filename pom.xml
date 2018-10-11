@@ -115,7 +115,27 @@
 			<artifactId>spring-ws-core</artifactId>
 			<version>2.2.0.RELEASE</version>
 		</dependency>
-
+		<!-- FreeMarker -->
+		<dependency>
+			<artifactId>freemarker</artifactId>
+			<groupId>org.freemarker</groupId>
+			<version>2.3.23</version>
+		</dependency>
+		<!-- Mail -->
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>javax.mail-api</artifactId>
+			<version>1.5.5</version>
+		</dependency>
+		<dependency>
+			<artifactId>mail</artifactId>
+			<groupId>javax.mail</groupId>
+			<version>1.4.7</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-mail</artifactId>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
