@@ -38,6 +38,8 @@ public class Contact implements Serializable {
 	private String email;
 	@Column(name = "passwd")
 	private String passwd;
+	@Column(name = "activation")
+	private int activation;
 
 	/**
 	 * @return the id
@@ -144,7 +146,8 @@ public class Contact implements Serializable {
 		this.passwd = passwd;
 	}
 
-	public Contact(int id, String nombre, String appellidos, int edad, String localidad, String email, String passwd) {
+	public Contact(int id, String nombre, String appellidos, int edad, String localidad, String email, String passwd,
+			int activation) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -153,9 +156,25 @@ public class Contact implements Serializable {
 		this.localidad = localidad;
 		this.email = email;
 		this.passwd = passwd;
+		this.activation = activation;
 	}
 
 	public Contact() {
 
+	}
+
+	/**
+	 * @return the activation
+	 */
+	public int getActivation() {
+		return activation;
+	}
+
+	/**
+	 * @param activation
+	 *            the activation to set
+	 */
+	public void setActivation(int activation) {
+		this.activation = activation;
 	}
 }

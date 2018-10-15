@@ -8,21 +8,21 @@ import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 public class MailConfig {
-    @Autowired
-    private MailProperties mailProperties;
+	@Autowired
+	private MailProperties mailProperties;
 
-    @Bean
-    public MultipartResolver multipartResolver() {
-        CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
-        multipartResolver.setMaxUploadSize(5242880);
-        return multipartResolver;
-    }
+	@Bean
+	public MultipartResolver multipartResolver() {
+		CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
+		multipartResolver.setMaxUploadSize(5242880);
+		return multipartResolver;
+	}
 
-    @Bean
-    public SimpleMailMessage templateSimpleMessage() {
-        SimpleMailMessage message = new SimpleMailMessage();
-        message.setText("Texto de prueba");
-        return message;
-    }
+	@Bean
+	public SimpleMailMessage templateSimpleMessage() {
+		SimpleMailMessage message = new SimpleMailMessage();
+		message.setText("Texto de prueba");
+		return message;
+	}
 
 }

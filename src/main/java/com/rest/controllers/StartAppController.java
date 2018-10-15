@@ -26,7 +26,7 @@ public class StartAppController {
 	@PostMapping("/registro/add")
 	public String addContact(@RequestBody Contact contact) {
 		if (!contact.getEmail().trim().isEmpty() && !contact.getPasswd().trim().isEmpty()) {
-			List<Contact> contactos = contactServiceImpl.findByNombreOrderById(contact.getNombre());
+			List<Contact> contactos = contactServiceImpl.findByAll();
 			for (Contact user : contactos) {
 				if (contact.getEmail().equals(user.getEmail())) {
 					return ResponseEntity
@@ -34,6 +34,7 @@ public class StartAppController {
 							.toString();
 				}
 			}
+			contact.setActivation(0);
 			contactServiceImpl.addContact(contact);
 			return ResponseEntity.ok(HttpStatus.OK + " Se dio de alta el usuario con email: " + contact.getEmail())
 					.toString();
@@ -63,8 +64,10 @@ public class StartAppController {
 	@PostMapping("/login")
 	public ResponseEntity<?> login(@RequestBody Contact contact) {
 		if (!contact.getEmail().trim().isEmpty() && !contact.getPasswd().isEmpty()) {
-			for (Contact user : contactServiceImpl.findByNombreOrderById(contact.getNombre())) {
-				if (contact.getEmail().equals(user.getEmail()) && contact.getPasswd().equals(user.getPasswd())) {
+
+			for (Contact user : contactServiceImpl.findByAll()) {
+				if (contact.getEmail().equals(user.getEmail()) && contact.getPasswd().equals(user.getPasswd())
+						&& user.getActivation() == 1) {
 					return ResponseEntity.ok(HttpStatus.OK + " Bienvenido");
 				}
 			}

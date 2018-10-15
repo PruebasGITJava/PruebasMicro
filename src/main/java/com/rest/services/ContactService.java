@@ -23,4 +23,10 @@ public interface ContactService {
 
 	public abstract String updateEmail(Contact contact, String email);
 
+	public abstract String updateActivation(Contact contact);
+
+	public abstract Contact findById1(int id);
+
+	public abstract List<Contact> findByAll();
+
 }

@@ -19,6 +19,19 @@ public class ContactServiceImpl implements ContactService {
 	private LoginRepository loginRepository;
 
 	@Override
+	public String updateActivation(Contact contact) {
+
+		contact.setActivation(1);
+		loginRepository.save(contact);
+		return " ";
+	}
+
+	@Override
+	public List<Contact> findByAll() {
+		return loginRepository.findAll();
+	}
+
+	@Override
 	public List<Contact> findByNombreOrderById(String nombre) {
 		return loginRepository.findAll();
 	}
@@ -49,6 +62,11 @@ public class ContactServiceImpl implements ContactService {
 	@Override
 	public Optional<Contact> findById(int id) {
 		return loginRepository.findById(new Integer(id));
+	}
+
+	@Override
+	public Contact findById1(int id) {
+		return loginRepository.findById(new Integer(id)).get();
 	}
 
 	@Override
