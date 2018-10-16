@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.rest.constants.Constant;
 import com.rest.utils.SOAPConnector;
 
 @RestController
@@ -23,11 +24,10 @@ public class CalculatorController {
 	@GetMapping("/add")
 	public String addContact(@RequestParam(required = true, name = "a") int a,
 			@RequestParam(required = true, name = "b") int b) {
-
 		AddResponse response = soapConnector.getAccountAdd(a, b);
 		response.getAddResult();
 
-		return ResponseEntity.ok(HttpStatus.OK + " RESULTADO CORRECTO " + response.getAddResult()).toString();
+		return ResponseEntity.ok(HttpStatus.OK + Constant.RESULT + response.getAddResult()).toString();
 
 	}
 
@@ -38,7 +38,7 @@ public class CalculatorController {
 		DivideResponse response = soapConnector.getAccountDivide(a, b);
 		response.getDivideResult();
 
-		return ResponseEntity.ok(HttpStatus.OK + " RESULTADO CORRECTO " + response.getDivideResult()).toString();
+		return ResponseEntity.ok(HttpStatus.OK + Constant.RESULT + response.getDivideResult()).toString();
 
 	}
 

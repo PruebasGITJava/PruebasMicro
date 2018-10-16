@@ -1,5 +1,6 @@
 package com.rest.controllers;
 
+import java.text.MessageFormat;
 import java.util.List;
 
 import javax.mail.Message;
@@ -33,9 +34,10 @@ public class InicioSessionDateController {
 
 	// RESTABLECER CONTRASEÑA Y ENVIAR POR EMAIL
 	@PutMapping("/person/resetPasswd")
-	public ResponseEntity<?> SendMail(@RequestBody Contact contact, String To, String Subject, String Mensage) {
+	public ResponseEntity<String> endMail(@RequestBody Contact contact, String to, String subject, String mensage) {
 
 		Session session = Session.getInstance(ApplicationConfig.getMailSender(), new javax.mail.Authenticator() {
+			@Override
 			protected PasswordAuthentication getPasswordAuthentication() {
 				return new PasswordAuthentication(contact.getEmail(), contact.getPasswd());
 			}
@@ -65,8 +67,10 @@ public class InicioSessionDateController {
 					HttpStatus.OK + " Se envió un correo con el cambio de contraseña al mail: " + contact.getEmail());
 
 		} catch (MessagingException e) {
-			throw new RuntimeException(e);// Si se produce un error
+			MessageFormat.format("Result {0}.", e);
 		}
+		return ResponseEntity.ok(HttpStatus.UNAUTHORIZED + " Error de cambio de contraseña.");
+
 	}
 
 	// CAMBIAR EMAIL

@@ -146,8 +146,7 @@ public class Contact implements Serializable {
 		this.passwd = passwd;
 	}
 
-	public Contact(int id, String nombre, String appellidos, int edad, String localidad, String email, String passwd,
-			int activation) {
+	public Contact(int id, String nombre, String appellidos, int edad, String localidad, String email, String passwd) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -156,7 +155,6 @@ public class Contact implements Serializable {
 		this.localidad = localidad;
 		this.email = email;
 		this.passwd = passwd;
-		this.activation = activation;
 	}
 
 	public Contact() {

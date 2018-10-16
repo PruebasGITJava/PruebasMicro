@@ -49,13 +49,12 @@ public class DatosContactController {
 	@GetMapping("/person/view")
 	public String viewContact(@RequestParam(required = true, name = "id") int id) {
 		Optional<Contact> contact = contactServiceImpl.findById(id);
-		if (contact != null) {
-			return ResponseEntity.ok(HttpStatus.OK + " Se ha visualizado los datos del usuario con email: "
-					+ contact.filter(p -> p.getEmail() != null).map(x -> x.getEmail()).toString() + "\n" + "ID: "
-					+ contact.get().getId() + ", NOMBRE: " + contact.get().getNombre() + ", APELLIDOS: "
-					+ contact.get().getAppellidos() + ", EDAD: " + contact.get().getEdad() + ", LOCALIDAD: "
-					+ contact.get().getLocalidad()).toString();
+		if (contact.isPresent()) {
+			return ResponseEntity
+					.ok(HttpStatus.OK + " Se ha visualizado los datos del usuario con email: " + contact.get())
+					.toString();
 		}
 		return ResponseEntity.ok(HttpStatus.UNAUTHORIZED + " Error de visualización de datos del usuario").toString();
+
 	}
 }

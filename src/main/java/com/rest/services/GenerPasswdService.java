@@ -1,6 +1,12 @@
 package com.rest.services;
 
+import java.util.Random;
+
 public class GenerPasswdService {
+	private GenerPasswdService() {
+		throw new IllegalStateException("Utility class");
+	}
+
 	public static final String NUMEROS = "0123456789";
 
 	public static final String MAYUSCULAS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -22,13 +28,14 @@ public class GenerPasswdService {
 	}
 
 	public static String getPassword(String key, int length) {
-		String pswd = "";
 
+		StringBuilder pswd = new StringBuilder();
 		for (int i = 0; i < length; i++) {
-			pswd += (key.charAt((int) (Math.random() * key.length())));
+			Random r = new Random();
+			pswd.append(key.charAt((int) (r.nextInt(key.length()))));
 		}
 
-		return pswd;
+		return pswd.toString();
 	}
 
 }

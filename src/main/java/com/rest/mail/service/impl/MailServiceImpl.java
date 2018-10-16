@@ -5,10 +5,12 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Logger;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.FileSystemResource;
@@ -35,6 +37,8 @@ public class MailServiceImpl implements MailService {
 	@Autowired
 	private Configuration freemarkerConfiguration;
 
+	private static final Logger LOGGER = (Logger) LoggerFactory.getLogger(MailServiceImpl.class);
+
 	@Override
 	public void sendSimpleMessageHTMLP(String to, int id) throws MessagingException, IOException, TemplateException {
 
@@ -42,7 +46,7 @@ public class MailServiceImpl implements MailService {
 		mail.setTo(to);
 		mail.setSubject("Email de confirmación App");
 
-		Map<String, Object> model = new HashMap<String, Object>();
+		Map<String, Object> model = new HashMap<>();
 		model.put("name", mail.getFrom());
 		model.put("location", "Madrid");
 		model.put("signature", "http://localhost:8080/message/activation?id=" + id);
@@ -74,7 +78,8 @@ public class MailServiceImpl implements MailService {
 
 			emailSender.send(message);
 		} catch (MailException exception) {
-			exception.printStackTrace();
+			LOGGER.info("Exception: " + exception);
+
 		}
 
 	}
@@ -103,7 +108,7 @@ public class MailServiceImpl implements MailService {
 
 			emailSender.send(message);
 		} catch (MessagingException e) {
-			e.printStackTrace();
+			LOGGER.info("Exception: " + e);
 		}
 
 	}

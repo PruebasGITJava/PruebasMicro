@@ -25,11 +25,10 @@ public class SOAPConnector extends WebServiceGatewaySupport {
 		request.setIntA(a);
 		request.setIntB(b);
 
-		AddResponse response = (AddResponse) getWebServiceTemplate().marshalSendAndReceive(
+		return ((AddResponse) getWebServiceTemplate().marshalSendAndReceive(
 				"http://www.dneonline.com/calculator.asmx?op=Add", request,
-				new SoapActionCallback("http://tempuri.org/Add"));
+				new SoapActionCallback("http://tempuri.org/Add")));
 
-		return response;
 	}
 
 	public DivideResponse getAccountDivide(int a, int b) {
@@ -38,11 +37,10 @@ public class SOAPConnector extends WebServiceGatewaySupport {
 		request.setIntA(a);
 		request.setIntB(b);
 
-		DivideResponse response = (DivideResponse) getWebServiceTemplate().marshalSendAndReceive(
+		return ((DivideResponse) getWebServiceTemplate().marshalSendAndReceive(
 				"http://www.dneonline.com/calculator.asmx?op=Divide", request,
-				new SoapActionCallback("http://tempuri.org/Divide"));
+				new SoapActionCallback("http://tempuri.org/Divide")));
 
-		return response;
 	}
 
 	public MultiplyResponse getAccountMultiply(int a, int b) {
@@ -51,11 +49,10 @@ public class SOAPConnector extends WebServiceGatewaySupport {
 		request.setIntA(a);
 		request.setIntB(b);
 
-		MultiplyResponse response = (MultiplyResponse) getWebServiceTemplate().marshalSendAndReceive(
+		return ((MultiplyResponse) getWebServiceTemplate().marshalSendAndReceive(
 				"http://www.dneonline.com/calculator.asmx?op=Multiply", request,
-				new SoapActionCallback("http://tempuri.org/Multiply"));
+				new SoapActionCallback("http://tempuri.org/Multiply")));
 
-		return response;
 	}
 
 	public SubtractResponse getAccountSubtract(int a, int b) {
@@ -64,10 +61,9 @@ public class SOAPConnector extends WebServiceGatewaySupport {
 		request.setIntA(a);
 		request.setIntB(b);
 
-		SubtractResponse response = (SubtractResponse) getWebServiceTemplate().marshalSendAndReceive(
+		return ((SubtractResponse) getWebServiceTemplate().marshalSendAndReceive(
 				"http://www.dneonline.com/calculator.asmx?op=Subtract", request,
-				new SoapActionCallback("http://tempuri.org/Subtract"));
+				new SoapActionCallback("http://tempuri.org/Subtract")));
 
-		return response;
 	}
 }

@@ -40,7 +40,7 @@ public class MailController {
 			@RequestParam(name = "id", required = true) int id, @RequestParam(name = "to", required = true) String to)
 			throws MessagingException, IOException, TemplateException {
 		LOGGER.info("Rest method: sendMail()");
-		// mailServiceImpl.sendSimpleMessage(to, "Hola", "caracola");
+		mailServiceImpl.sendSimpleMessage(to, "Hola", "caracola");
 		mailServiceImpl.sendSimpleMessageHTMLP(to, id);
 
 	}

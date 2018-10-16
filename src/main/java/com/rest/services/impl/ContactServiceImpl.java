@@ -61,12 +61,13 @@ public class ContactServiceImpl implements ContactService {
 
 	@Override
 	public Optional<Contact> findById(int id) {
-		return loginRepository.findById(new Integer(id));
+		return loginRepository.findById(id);
 	}
 
 	@Override
 	public Contact findById1(int id) {
-		return loginRepository.findById(new Integer(id)).get();
+		return ((ContactService) loginRepository).findById1(id);
+
 	}
 
 	@Override

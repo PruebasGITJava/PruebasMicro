@@ -62,7 +62,7 @@ public class StartAppController {
 
 	// CONECTAR A LA APLICACION (SERVICIO REST)
 	@PostMapping("/login")
-	public ResponseEntity<?> login(@RequestBody Contact contact) {
+	public ResponseEntity<String> login(@RequestBody Contact contact) {
 		if (!contact.getEmail().trim().isEmpty() && !contact.getPasswd().isEmpty()) {
 
 			for (Contact user : contactServiceImpl.findByAll()) {
@@ -77,7 +77,7 @@ public class StartAppController {
 
 	// DESCONECTAR LA APLICACION (SERVICIO REST)
 	@PostMapping("/logout")
-	public ResponseEntity<?> outlogin(@RequestBody Contact contact) {
+	public ResponseEntity<String> outlogin(@RequestBody Contact contact) {
 		for (Contact user : contactServiceImpl.findByNombreOrderById(contact.getNombre())) {
 			if (contact.getEmail().equals(user.getEmail()) && contact.getPasswd().equals(user.getPasswd())) { // entonces
 																												// aqui
