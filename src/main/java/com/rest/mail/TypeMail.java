@@ -1,22 +1,36 @@
 package com.rest.mail;
 
 /**
- * Enum of templates
+ * Enum of templates.
  *
  * @author ciber
- *
  */
 public enum TypeMail {
 
-    HELLO("email.html"), HELLO_PDF("hello.pdf");
+	/** The hello. */
+	HELLO("email.html"),
+	/** The hello pdf. */
+	HELLO_PDF("hello.pdf");
 
-    private String template;
+	/** The template. */
+	private String template;
 
-    private TypeMail(String template) {
-        this.template = template;
-    }
+	/**
+	 * Instantiates a new type mail.
+	 *
+	 * @param template
+	 *            the template
+	 */
+	private TypeMail(String template) {
+		this.template = template;
+	}
 
-    public String getTemplate() {
-        return this.template;
-    }
+	/**
+	 * Gets the template.
+	 *
+	 * @return the template
+	 */
+	public String getTemplate() {
+		return this.template;
+	}
 }

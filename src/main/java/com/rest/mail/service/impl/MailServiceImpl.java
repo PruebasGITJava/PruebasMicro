@@ -28,17 +28,34 @@ import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 
+/**
+ * The Class MailServiceImpl.
+ */
 @Service("mailServiceImpl")
 public class MailServiceImpl implements MailService {
 
+	/** The email sender. */
 	@Autowired
 	public JavaMailSender emailSender;
+
+	/** The free marker service. */
 	@Autowired
 	public FreeMarkerService freeMarkerService;
+
+	/** The freemarker configuration. */
 	@Autowired
 	private Configuration freemarkerConfiguration;
+
+	/** The Constant LOGGER. */
 	private static final Logger LOGGER = LoggerFactory.getLogger(MailServiceImpl.class);
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.rest.mail.service.MailService#sendSimpleMessagePasswdReset(com.rest.
+	 * entity.Contact, java.lang.String)
+	 */
 	@Override
 	public void sendSimpleMessagePasswdReset(Contact contact, String passwd) {
 		try {
@@ -54,6 +71,12 @@ public class MailServiceImpl implements MailService {
 
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.rest.mail.service.MailService#sendSimpleMessageHTMLP(java.lang.
+	 * String, int)
+	 */
 	@Override
 	public void sendSimpleMessageHTMLP(String to, int id) throws MessagingException, IOException, TemplateException {
 
@@ -83,6 +106,13 @@ public class MailServiceImpl implements MailService {
 		emailSender.send(message);
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.rest.mail.service.MailService#sendSimpleMessage(java.lang.String,
+	 * java.lang.String, java.lang.String)
+	 */
 	@Override
 	public void sendSimpleMessage(String to, String subject, String text) {
 		try {
@@ -98,6 +128,14 @@ public class MailServiceImpl implements MailService {
 
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.rest.mail.service.MailService#sendSimpleMessageUsingTemplate(java.
+	 * lang.String, java.lang.String,
+	 * org.springframework.mail.SimpleMailMessage, java.lang.String[])
+	 */
 	@Override
 	public void sendSimpleMessageUsingTemplate(String to, String subject, SimpleMailMessage template,
 			String... templateArgs) {
@@ -106,6 +144,13 @@ public class MailServiceImpl implements MailService {
 
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.rest.mail.service.MailService#sendMessageWithAttachment(java.lang.
+	 * String, java.lang.String, java.lang.String, java.lang.String)
+	 */
 	@Override
 	public void sendMessageWithAttachment(String to, String subject, String text, String pathToAttachment) {
 		try {

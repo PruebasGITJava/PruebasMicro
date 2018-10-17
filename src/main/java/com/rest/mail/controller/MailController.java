@@ -25,7 +25,13 @@ public class MailController {
 	@Qualifier("contactServiceImpl")
 	private ContactServiceImpl contactServiceImpl;
 
-	// CAMBIAR ESTADO DE ACTIVACIÓN Y REDIRIGIR A UNA PAGINA DE INFORMACIÓN
+	/**
+	 * Modify activation.
+	 *
+	 * @param id
+	 *            the id
+	 * @return the string
+	 */
 	@GetMapping(RestMailConstants.MAIL_REST_ACTIVATION)
 	public String modifyActivation(@RequestParam(required = true, name = "id") int id) {
 		Contact contact = contactServiceImpl.findById1(id);

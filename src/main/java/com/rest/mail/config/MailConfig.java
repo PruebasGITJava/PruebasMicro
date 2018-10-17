@@ -1,16 +1,20 @@
 package com.rest.mail.config;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.mail.MailProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
+/**
+ * The Class MailConfig.
+ */
 public class MailConfig {
-	@Autowired
-	private MailProperties mailProperties;
 
+	/**
+	 * Multipart resolver.
+	 *
+	 * @return the multipart resolver
+	 */
 	@Bean
 	public MultipartResolver multipartResolver() {
 		CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
@@ -18,6 +22,11 @@ public class MailConfig {
 		return multipartResolver;
 	}
 
+	/**
+	 * Template simple message.
+	 *
+	 * @return the simple mail message
+	 */
 	@Bean
 	public SimpleMailMessage templateSimpleMessage() {
 		SimpleMailMessage message = new SimpleMailMessage();
