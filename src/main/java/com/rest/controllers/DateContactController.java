@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.rest.constants.ConstantApp;
 import com.rest.entity.Contact;
 import com.rest.mail.service.impl.MailServiceImpl;
 import com.rest.services.GenerPasswdService;
@@ -25,7 +26,7 @@ import freemarker.template.TemplateException;
  * The Class InicioSessionDateController.
  */
 @org.springframework.web.bind.annotation.RestController
-@RequestMapping("/app/contact")
+@RequestMapping(ConstantApp.DATECONTACT)
 public class DateContactController {
 
 	/** The contact service impl. */
@@ -44,7 +45,7 @@ public class DateContactController {
 	 *            the contact
 	 * @return the response entity
 	 */
-	@PutMapping("/resetPasswd")
+	@PutMapping(ConstantApp.RESET)
 	public ResponseEntity<String> sendMail(@RequestBody Contact contact) {
 
 		String passwd = GenerPasswdService.getPassword(
@@ -76,7 +77,7 @@ public class DateContactController {
 	 * @throws IOException
 	 * @throws MessagingException
 	 */
-	@PutMapping("/emailEdit")
+	@PutMapping(ConstantApp.EDITM)
 	public String updateEmail(@RequestBody Contact contact) throws MessagingException, IOException, TemplateException {
 		if (!contact.getEmail().trim().isEmpty() && !contact.getPasswd().trim().isEmpty()) {
 			List<Contact> contactos = contactServiceImpl.findByNombreOrderById(contact.getNombre());
@@ -104,7 +105,7 @@ public class DateContactController {
 	 *            the contact
 	 * @return the string
 	 */
-	@PutMapping("/passwdEdit")
+	@PutMapping(ConstantApp.EDITP)
 	public String updatePasswd(@RequestBody Contact contact) {
 		if (!contact.getEmail().trim().isEmpty() && !contact.getPasswd().trim().isEmpty()) {
 			List<Contact> contactos = contactServiceImpl.findByNombreOrderById(contact.getNombre());

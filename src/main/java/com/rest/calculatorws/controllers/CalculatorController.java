@@ -19,7 +19,7 @@ import com.rest.utils.SOAPConnector;
  * The Class CalculatorController.
  */
 @RestController
-@RequestMapping("/calculator")
+@RequestMapping(ConstantApp.CALCULATOR)
 public class CalculatorController {
 
 	/** The soap connector. */
@@ -35,7 +35,7 @@ public class CalculatorController {
 	 *            the b
 	 * @return the string
 	 */
-	@GetMapping("/add")
+	@GetMapping(ConstantApp.ADDCALCULATOR)
 	public String addContact(@RequestParam(required = true, name = "a") int a,
 			@RequestParam(required = true, name = "b") int b) {
 
@@ -55,7 +55,7 @@ public class CalculatorController {
 	 *            the b
 	 * @return the string
 	 */
-	@GetMapping("/divide")
+	@GetMapping(ConstantApp.DIVCALCULATOR)
 	public String divideContact(@RequestParam(required = true, name = "a") int a,
 			@RequestParam(required = true, name = "b") int b) {
 
@@ -75,7 +75,7 @@ public class CalculatorController {
 	 *            the b
 	 * @return the string
 	 */
-	@GetMapping("/multiply")
+	@GetMapping(ConstantApp.MULCALCULATOR)
 	public String multiplyContact(@RequestParam(required = true, name = "a") int a,
 			@RequestParam(required = true, name = "b") int b) {
 
@@ -95,7 +95,7 @@ public class CalculatorController {
 	 *            the b
 	 * @return the string
 	 */
-	@GetMapping("/subtract")
+	@GetMapping(ConstantApp.SUBCALCULATOR)
 	public String subtractContact(@RequestParam(required = true, name = "a") int a,
 			@RequestParam(required = true, name = "b") int b) {
 

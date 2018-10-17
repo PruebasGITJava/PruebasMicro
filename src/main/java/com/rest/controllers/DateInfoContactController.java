@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.rest.constants.ConstantApp;
 import com.rest.entity.Contact;
 import com.rest.services.impl.ContactServiceImpl;
 
@@ -20,7 +21,7 @@ import com.rest.services.impl.ContactServiceImpl;
  * The Class DateInfoContactController.
  */
 @org.springframework.web.bind.annotation.RestController
-@RequestMapping("/app/contact/info")
+@RequestMapping(ConstantApp.DATEINFOCONTROLLER)
 public class DateInfoContactController {
 
 	/** The contact service impl. */
@@ -36,7 +37,7 @@ public class DateInfoContactController {
 	 * @return the string
 	 */
 
-	@PutMapping("/personDate")
+	@PutMapping(ConstantApp.DATE)
 	public String updateContact1(@RequestBody Contact contact) {
 		if (!contact.getEmail().trim().isEmpty() && !contact.getPasswd().trim().isEmpty()) {
 			List<Contact> contactos = contactServiceImpl.findByNombreOrderById(contact.getNombre());
@@ -64,7 +65,7 @@ public class DateInfoContactController {
 	 * @return the string
 	 */
 
-	@GetMapping("/view")
+	@GetMapping(ConstantApp.VIEW)
 	public String viewContact(@RequestParam(required = true, name = "id") int id) {
 		Optional<Contact> contact = contactServiceImpl.findById(id);
 		if (contact != null) {

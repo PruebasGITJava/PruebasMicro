@@ -29,7 +29,7 @@ import freemarker.template.TemplateException;
  * The Class StartAppController.
  */
 @org.springframework.web.bind.annotation.RestController
-@RequestMapping("/app")
+@RequestMapping(ConstantApp.STARTCONTROLLER)
 public class StartContactController {
 
 	/** The Constant LOGGER. */
@@ -58,7 +58,7 @@ public class StartContactController {
 	 * @throws TemplateException
 	 *             the template exception
 	 */
-	@PostMapping("/registry/add")
+	@PostMapping(ConstantApp.ADDCONTACT)
 	public String addContact(@RequestBody Contact contact) throws MessagingException, IOException, TemplateException {
 		if (!contact.getEmail().trim().isEmpty() && !contact.getPasswd().trim().isEmpty()) {
 			List<Contact> contactos = contactServiceImpl.findByAll();
@@ -92,7 +92,7 @@ public class StartContactController {
 	 *            the contact
 	 * @return the string
 	 */
-	@DeleteMapping("/registry/del")
+	@DeleteMapping(ConstantApp.DELCONTACT)
 	public String deleteContact(@RequestBody Contact contact) {
 		if (!contact.getEmail().trim().isEmpty() && !contact.getPasswd().trim().isEmpty()) {
 			List<Contact> contactos = contactServiceImpl.findByNombreOrderById(contact.getNombre());
@@ -118,7 +118,7 @@ public class StartContactController {
 	 *            the contact
 	 * @return the response entity
 	 */
-	@PostMapping("/login")
+	@PostMapping(ConstantApp.LOGIN)
 	public ResponseEntity<String> login(@RequestBody Contact contact) {
 		if (!contact.getEmail().trim().isEmpty() && !contact.getPasswd().isEmpty()) {
 
@@ -142,7 +142,7 @@ public class StartContactController {
 	 *            the contact
 	 * @return the response entity
 	 */
-	@PostMapping("/logout")
+	@PostMapping(ConstantApp.LOGOUT)
 	public ResponseEntity<String> outlogin(@RequestBody Contact contact) {
 		for (Contact user : contactServiceImpl.findByNombreOrderById(contact.getNombre())) {
 			if (contact.getEmail().equals(user.getEmail())
