@@ -3,6 +3,7 @@ package com.rest.controllers;
 import java.util.List;
 import java.util.Optional;
 
+import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
@@ -43,7 +44,8 @@ public class DateInfoContactController {
 			List<Contact> contactos = contactServiceImpl.findByNombreOrderById(contact.getNombre());
 
 			for (Contact user : contactos) {
-				if (contact.getEmail().equals(user.getEmail()) && contact.getPasswd().equals(user.getPasswd())) {
+				if (contact.getEmail().equals(user.getEmail())
+						&& DigestUtils.md5Hex(contact.getPasswd()).equals(user.getPasswd())) {
 
 					contactServiceImpl.updateContact(user, contact.getNombre(), contact.getAppellidos(),
 							contact.getEdad(), contact.getLocalidad());
