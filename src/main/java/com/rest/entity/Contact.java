@@ -38,6 +38,8 @@ public class Contact implements Serializable {
 	private String email;
 	@Column(name = "passwd")
 	private String passwd;
+	@Column(name = "activation")
+	private int activation;
 
 	/**
 	 * @return the id
@@ -157,5 +159,20 @@ public class Contact implements Serializable {
 
 	public Contact() {
 
+	}
+
+	/**
+	 * @return the activation
+	 */
+	public int getActivation() {
+		return activation;
+	}
+
+	/**
+	 * @param activation
+	 *            the activation to set
+	 */
+	public void setActivation(int activation) {
+		this.activation = activation;
 	}
 }
