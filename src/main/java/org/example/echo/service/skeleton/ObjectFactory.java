@@ -30,35 +30,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Divide }
+     * Create an instance of {@link AddResponse }
      * 
      */
-    public Divide createDivide() {
-        return new Divide();
-    }
-
-    /**
-     * Create an instance of {@link Multiply }
-     * 
-     */
-    public Multiply createMultiply() {
-        return new Multiply();
-    }
-
-    /**
-     * Create an instance of {@link DivideResponse }
-     * 
-     */
-    public DivideResponse createDivideResponse() {
-        return new DivideResponse();
-    }
-
-    /**
-     * Create an instance of {@link Subtract }
-     * 
-     */
-    public Subtract createSubtract() {
-        return new Subtract();
+    public AddResponse createAddResponse() {
+        return new AddResponse();
     }
 
     /**
@@ -70,6 +46,22 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link MultiplyResponse }
+     * 
+     */
+    public MultiplyResponse createMultiplyResponse() {
+        return new MultiplyResponse();
+    }
+
+    /**
+     * Create an instance of {@link Divide }
+     * 
+     */
+    public Divide createDivide() {
+        return new Divide();
+    }
+
+    /**
      * Create an instance of {@link SubtractResponse }
      * 
      */
@@ -78,19 +70,27 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link AddResponse }
+     * Create an instance of {@link Subtract }
      * 
      */
-    public AddResponse createAddResponse() {
-        return new AddResponse();
+    public Subtract createSubtract() {
+        return new Subtract();
     }
 
     /**
-     * Create an instance of {@link MultiplyResponse }
+     * Create an instance of {@link DivideResponse }
      * 
      */
-    public MultiplyResponse createMultiplyResponse() {
-        return new MultiplyResponse();
+    public DivideResponse createDivideResponse() {
+        return new DivideResponse();
+    }
+
+    /**
+     * Create an instance of {@link Multiply }
+     * 
+     */
+    public Multiply createMultiply() {
+        return new Multiply();
     }
 
 }

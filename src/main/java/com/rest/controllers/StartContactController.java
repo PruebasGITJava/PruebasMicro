@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.mail.MessagingException;
 
+import org.apache.commons.codec.digest.DigestUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -71,6 +72,9 @@ public class StartContactController {
 			}
 			contact.setActivation(0);
 			LOGGER.info("Rest method: setActivation(0)");
+			String encriptMD5 = DigestUtils.md5Hex(contact.getPasswd());
+			contact.setPasswd(encriptMD5);
+			LOGGER.info("Rest method: md5Hex(paswd)");
 			contactServiceImpl.addContact(contact);
 			LOGGER.info("Rest method: addContact()");
 			mailServiceImpl.sendSimpleMessageHTMLP(contact.getEmail(), contact.getId());
@@ -93,7 +97,8 @@ public class StartContactController {
 		if (!contact.getEmail().trim().isEmpty() && !contact.getPasswd().trim().isEmpty()) {
 			List<Contact> contactos = contactServiceImpl.findByNombreOrderById(contact.getNombre());
 			for (Contact user : contactos) {
-				if (contact.getEmail().equals(user.getEmail())) {
+				if (contact.getEmail().equals(user.getEmail())
+						&& DigestUtils.md5Hex(contact.getPasswd()).equals(user.getPasswd())) {
 					LOGGER.info(ConstantApp.CONTACTS, contact.getEmail(), ConstantApp.USER, user.getEmail(), "'.");
 					contactServiceImpl.removeContact(user);
 					LOGGER.info("Rest method: removeContact()");
@@ -118,7 +123,8 @@ public class StartContactController {
 		if (!contact.getEmail().trim().isEmpty() && !contact.getPasswd().isEmpty()) {
 
 			for (Contact user : contactServiceImpl.findByAll()) {
-				if (contact.getEmail().equals(user.getEmail()) && contact.getPasswd().equals(user.getPasswd())
+				if (contact.getEmail().equals(user.getEmail())
+						&& DigestUtils.md5Hex(contact.getPasswd()).equals(user.getPasswd())
 						&& user.getActivation() == 1) {
 					LOGGER.info("Rest params: --Contact(new): '" + contact.getEmail() + ", " + contact.getPasswd()
 							+ "' --User(bbdd): '" + user.getEmail() + ", " + user.getPasswd() + "'.");
@@ -139,7 +145,8 @@ public class StartContactController {
 	@PostMapping("/logout")
 	public ResponseEntity<String> outlogin(@RequestBody Contact contact) {
 		for (Contact user : contactServiceImpl.findByNombreOrderById(contact.getNombre())) {
-			if (contact.getEmail().equals(user.getEmail()) && contact.getPasswd().equals(user.getPasswd())) {
+			if (contact.getEmail().equals(user.getEmail())
+					&& DigestUtils.md5Hex(contact.getPasswd()).equals(user.getPasswd())) {
 				LOGGER.info("Rest params: --Contact(new): '" + contact.getEmail() + ", " + contact.getPasswd()
 						+ "' --User(bbdd): '" + user.getEmail() + ", " + user.getPasswd() + "'.");
 				return ResponseEntity.ok(HttpStatus.OK + " Saliste satisfactoriamente");

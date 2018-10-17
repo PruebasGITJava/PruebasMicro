@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.mail.MessagingException;
 
+import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
@@ -55,7 +56,8 @@ public class DateContactController {
 			for (Contact user : contactos) {
 				if (contact.getEmail().equals(user.getEmail())) {
 					mailServiceImpl.sendSimpleMessagePasswdReset(contact, passwd);
-					contactServiceImpl.updatePasswd(user, passwd);
+					String encriptMD5 = DigestUtils.md5Hex(passwd);
+					contactServiceImpl.updatePasswd(user, encriptMD5);
 
 				}
 			}
@@ -80,7 +82,7 @@ public class DateContactController {
 			List<Contact> contactos = contactServiceImpl.findByNombreOrderById(contact.getNombre());
 
 			for (Contact user : contactos) {
-				if (contact.getPasswd().equals(user.getPasswd())) {
+				if (DigestUtils.md5Hex(contact.getPasswd()).equals(user.getPasswd())) {
 					contactServiceImpl.updateDesactivation(user);
 					contactServiceImpl.updateEmail(user, contact.getEmail());
 					mailServiceImpl.sendSimpleMessageHTMLP(contact.getEmail(), user.getId());
@@ -110,7 +112,7 @@ public class DateContactController {
 			for (Contact user : contactos) {
 				if (contact.getEmail().equals(user.getEmail()) && contact.getPasswd().length() > 8) {
 
-					contactServiceImpl.updatePasswd(user, contact.getPasswd());
+					contactServiceImpl.updatePasswd(user, DigestUtils.md5Hex(contact.getPasswd()));
 
 					return ResponseEntity.ok(HttpStatus.OK
 							+ " Se ha modificado la contraseña de manera manual del email: " + contact.getEmail())
