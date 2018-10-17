@@ -16,16 +16,27 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.rest.entity.Contact;
 import com.rest.services.impl.ContactServiceImpl;
 
+/**
+ * The Class DateInfoContactController.
+ */
 @org.springframework.web.bind.annotation.RestController
-@RequestMapping("/api")
-public class DatosContactController {
+@RequestMapping("/app/contact/info")
+public class DateInfoContactController {
 
+	/** The contact service impl. */
 	@Autowired
 	@Qualifier("contactServiceImpl")
 	private ContactServiceImpl contactServiceImpl;
 
-	// INSERTAR/MODIFICAR/ELIMINAR DATOS DE CONTACTO (SERVICIO REST)
-	@PutMapping("/person/datos")
+	/**
+	 * Update contact 1.
+	 *
+	 * @param contact
+	 *            the contact
+	 * @return the string
+	 */
+
+	@PutMapping("/personDate")
 	public String updateContact1(@RequestBody Contact contact) {
 		if (!contact.getEmail().trim().isEmpty() && !contact.getPasswd().trim().isEmpty()) {
 			List<Contact> contactos = contactServiceImpl.findByNombreOrderById(contact.getNombre());
@@ -45,8 +56,15 @@ public class DatosContactController {
 		return ResponseEntity.ok(HttpStatus.UNAUTHORIZED + " Error de modificación de datos del usuario").toString();
 	}
 
-	// VISUALIZAR DATOS DE CONTACTO (SERVICIO REST)
-	@GetMapping("/person/view")
+	/**
+	 * View contact.
+	 *
+	 * @param id
+	 *            the id
+	 * @return the string
+	 */
+
+	@GetMapping("/view")
 	public String viewContact(@RequestParam(required = true, name = "id") int id) {
 		Optional<Contact> contact = contactServiceImpl.findById(id);
 		if (contact != null) {
