@@ -1,6 +1,5 @@
 package com.rest.mail.service.impl;
 
-import java.text.MessageFormat;
 import java.util.Map;
 
 import org.slf4j.Logger;
@@ -37,11 +36,7 @@ public class FreeMarkerService {
 		if (model.isEmpty()) {
 			return geFreeMarkerTemplateSimple(type);
 		}
-<<<<<<< HEAD
 		return geFreeMarkerTemplateContent(model, type);
-=======
-		return geFreeMarkerTemplateContent(type);
->>>>>>> refs/remotes/origin/pruebas
 
 	}
 
@@ -51,40 +46,19 @@ public class FreeMarkerService {
 	 * @param type
 	 * @return
 	 */
-<<<<<<< HEAD
 	public String geFreeMarkerTemplateSimple(TypeMail type) {
 		LOGGER.info("Method: geFreeMarkerTemplateContent");
-=======
->>>>>>> refs/remotes/origin/pruebas
 
-<<<<<<< HEAD
 		StringBuilder content = new StringBuilder();
 		try {
 			content.append(FreeMarkerTemplateUtils
 					.processTemplateIntoString(freemarkerConfiguration.getTemplate(type.getTemplate()), null));
-=======
-	public String geFreeMarkerTemplateSimple(TypeMail type) {
-		LOGGER.info("Method: geFreeMarkerTemplateContent");
-		StringBuilder content = new StringBuilder();
->>>>>>> refs/remotes/origin/pruebas
 
-<<<<<<< HEAD
 			LOGGER.info("Content: {}", content);
-=======
-		try {
-			content.append(FreeMarkerTemplateUtils
-					.processTemplateIntoString(freemarkerConfiguration.getTemplate(type.getTemplate()), null));
-			String conten = content.toString();
-			LOGGER.info(conten);
->>>>>>> refs/remotes/origin/pruebas
 
 			return content.toString();
 		} catch (Exception e) {
-<<<<<<< HEAD
 			LOGGER.info("Exception occured while processing fmtemplate: {}", e.getMessage());
-=======
-			MessageFormat.format("Exception occured while processing fmtemplate: {0}.", e.getMessage());
->>>>>>> refs/remotes/origin/pruebas
 		}
 		return null;
 	}
@@ -96,32 +70,18 @@ public class FreeMarkerService {
 	 * @param type
 	 * @return
 	 */
-<<<<<<< HEAD
 	public String geFreeMarkerTemplateContent(Map<String, Object> model, TypeMail type) {
-=======
-	public String geFreeMarkerTemplateContent(TypeMail type) {
->>>>>>> refs/remotes/origin/pruebas
 		LOGGER.info("Method: geFreeMarkerTemplateContent");
 		StringBuilder content = new StringBuilder();
 		try {
 			content.append(FreeMarkerTemplateUtils
 					.processTemplateIntoString(freemarkerConfiguration.getTemplate(type.getTemplate()), null));
 
-<<<<<<< HEAD
 			LOGGER.info("Content: {}", content);
 
 			return content.toString();
 		} catch (Exception e) {
 			LOGGER.info("Exception occured while processing fmtemplate: {}", e.getMessage());
-=======
-			String conten = content.toString();
-			LOGGER.info(conten);
-
-			return content.toString();
-		} catch (Exception e) {
-			MessageFormat.format("Exception occured while processing fmtemplate {0}.", e.getMessage());
-
->>>>>>> refs/remotes/origin/pruebas
 		}
 		return null;
 	}

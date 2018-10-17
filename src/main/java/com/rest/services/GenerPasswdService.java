@@ -1,23 +1,11 @@
 package com.rest.services;
 
-<<<<<<< HEAD
 /**
  * The Class GenerPasswdService.
  */
-=======
-import java.util.Random;
-
->>>>>>> refs/remotes/origin/pruebas
 public class GenerPasswdService {
-<<<<<<< HEAD
 
 	/** The Constant NUMEROS. */
-=======
-	private GenerPasswdService() {
-		throw new IllegalStateException("Utility class");
-	}
-
->>>>>>> refs/remotes/origin/pruebas
 	public static final String NUMEROS = "0123456789";
 
 	/** The Constant MAYUSCULAS. */
@@ -72,14 +60,13 @@ public class GenerPasswdService {
 	 * @return the password
 	 */
 	public static String getPassword(String key, int length) {
+		String pswd = "";
 
-		StringBuilder pswd = new StringBuilder();
 		for (int i = 0; i < length; i++) {
-			Random r = new Random();
-			pswd.append(key.charAt((int) (r.nextInt(key.length()))));
+			pswd += (key.charAt((int) (Math.random() * key.length())));
 		}
 
-		return pswd.toString();
+		return pswd;
 	}
 
 }

@@ -27,7 +27,6 @@ public class ContactServiceImpl implements ContactService {
 	}
 
 	@Override
-<<<<<<< HEAD
 	public String updateDesactivation(Contact contact) {
 
 		contact.setActivation(0);
@@ -36,8 +35,6 @@ public class ContactServiceImpl implements ContactService {
 	}
 
 	@Override
-=======
->>>>>>> refs/remotes/origin/pruebas
 	public List<Contact> findByAll() {
 		return loginRepository.findAll();
 	}
@@ -77,11 +74,7 @@ public class ContactServiceImpl implements ContactService {
 
 	@Override
 	public Contact findById1(int id) {
-<<<<<<< HEAD
 		return loginRepository.findById(id).get();
-=======
-		return ((ContactService) loginRepository).findById1(id);
->>>>>>> refs/remotes/origin/pruebas
 
 	}
 

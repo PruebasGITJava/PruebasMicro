@@ -40,14 +40,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-mail</artifactId>
 		</dependency>
-<<<<<<< HEAD
-		<dependency>
-			<artifactId>mail</artifactId>
-			<groupId>javax.mail</groupId>
-			<version>1.4.7</version>
-		</dependency>
-=======
->>>>>>> refs/remotes/origin/pruebas
 		<dependency>
 			<groupId>com.sun.mail</groupId>
 			<artifactId>javax.mail</artifactId>
@@ -56,14 +48,11 @@
 			<groupId>javax.mail</groupId>
 			<artifactId>javax.mail-api</artifactId>
 			<version>1.5.5</version><!--$NO-MVN-MAN-VER$-->
-<<<<<<< HEAD
-=======
 		</dependency>
 		<dependency>
 			<artifactId>mail</artifactId>
 			<groupId>javax.mail</groupId>
 			<version>1.4.7</version>
->>>>>>> refs/remotes/origin/pruebas
 		</dependency>
 		<!-- dependencies persistence -->
 		<dependency>
@@ -124,25 +113,8 @@
 		<dependency>
 			<groupId>org.springframework.ws</groupId>
 			<artifactId>spring-ws-core</artifactId>
-<<<<<<< HEAD
-			<version>3.0.4.RELEASE</version><!--$NO-MVN-MAN-VER$-->
-=======
-			<version>${spring.ws.version}</version><!--$NO-MVN-MAN-VER$-->
->>>>>>> refs/remotes/origin/pruebas
-		</dependency>
-<<<<<<< HEAD
-=======
-		<dependency>
-			<groupId>org.springframework.ws</groupId>
-			<artifactId>spring-ws-core</artifactId>
 			<version>3.0.4.RELEASE</version><!--$NO-MVN-MAN-VER$-->
 		</dependency>
-		<dependency>
-			<groupId>org.springframework.ws</groupId>
-			<artifactId>spring-ws-core</artifactId>
-			<version>2.2.0.RELEASE</version><!--$NO-MVN-MAN-VER$-->
-		</dependency>
->>>>>>> refs/remotes/origin/pruebas
 	</dependencies>
 	<build>
 		<plugins>
