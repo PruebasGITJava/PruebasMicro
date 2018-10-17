@@ -1,4 +1,0 @@
-Usuario:email=ejem1@ejem.com:passwd=ejem1@ejem.com:inicio=false
-Usuario:email=ejem3@ejem.com:passwd=ejem3@ejem.com:inicio=false 
-Usuario:email=ejem4@ejem.com:passwd=ejem4@ejem.com:inicio=false
-Usuario:email=manu@ejem.com:passwd=12345:inicio=false:nombre=null:appellidos=null:edad=23:telefono=0:localidad=null

@@ -94,7 +94,6 @@ public class SOAPConnector extends WebServiceGatewaySupport {
 		Subtract request = new Subtract();
 		request.setIntA(a);
 		request.setIntB(b);
-
 		return ((SubtractResponse) getWebServiceTemplate().marshalSendAndReceive(
 				"http://www.dneonline.com/calculator.asmx?op=Subtract", request,
 				new SoapActionCallback("http://tempuri.org/Subtract")));

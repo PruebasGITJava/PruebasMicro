@@ -41,6 +41,11 @@
 			<artifactId>spring-boot-starter-mail</artifactId>
 		</dependency>
 		<dependency>
+			<artifactId>mail</artifactId>
+			<groupId>javax.mail</groupId>
+			<version>1.4.7</version>
+		</dependency>
+		<dependency>
 			<groupId>com.sun.mail</groupId>
 			<artifactId>javax.mail</artifactId>
 		</dependency>
@@ -48,11 +53,6 @@
 			<groupId>javax.mail</groupId>
 			<artifactId>javax.mail-api</artifactId>
 			<version>1.5.5</version><!--$NO-MVN-MAN-VER$-->
-		</dependency>
-		<dependency>
-			<artifactId>mail</artifactId>
-			<groupId>javax.mail</groupId>
-			<version>1.4.7</version>
 		</dependency>
 		<!-- dependencies persistence -->
 		<dependency>
@@ -81,12 +81,10 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-		<!-- dependencies jpa -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
-		<!-- dependencies test -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -155,6 +153,8 @@
 					</wsdlUrls>
 				</configuration>
 			</plugin>
+
+
 		</plugins>
 		<pluginManagement>
 			<plugins>
@@ -193,4 +193,6 @@
 			</plugins>
 		</pluginManagement>
 	</build>
+
+
 </project>
